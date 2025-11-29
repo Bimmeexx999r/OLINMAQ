@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Modelo AR - OLINMAQ</title>
+
+  <!-- Carga de <model-viewer> desde CDN -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #111;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+    header {
+      padding: 10px 16px;
+      font-size: 16px;
+      background: #181818;
+      border-bottom: 1px solid #333;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    header span {
+      opacity: 0.8;
+      font-size: 13px;
+    }
+    model-viewer {
+      flex: 1;
+      width: 100%;
+      outline: none;
+    }
+    .ar-button {
+      position: absolute;
+      left: 50%;
+      bottom: 24px;
+      transform: translateX(-50%);
+      padding: 12px 22px;
+      border-radius: 999px;
+      border: none;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      background: #0d6efd;
+      color: white;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.45);
+    }
+    .ar-button:active {
+      transform: translateX(-50%) translateY(1px);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.45);
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    OLINMAQ – Visualizador 3D / AR
+    <span>Toca “Ver en tu espacio” en tu celular compatible</span>
+  </header>
+
+  <!-- Modelo OLINMAQ -->
+  <model-viewer
+      src="OLINMAQ.glb"
+      ar
+      ar-modes="webxr scene-viewer quick-look"
+      camera-controls
+      auto-rotate
+      shadow-intensity="1"
+      exposure="0.47"
+      environment-image="neutral">
+
+    <!-- Botón de AR -->
+    <button slot="ar-button" class="ar-button">
+      Ver en tu espacio
+    </button>
+
+  </model-viewer>
+
+</body>
+</html>
